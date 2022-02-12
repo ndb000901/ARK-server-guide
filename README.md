@@ -302,14 +302,48 @@ verb 3  #日志级别
 tls-auth ta.key 0 # 此项可不要
 ```
 
+**最终配置(不唯一)**
+
+```
+local 10.0.4.6
+port 40000
+proto udp
+dev tun
+ca ca.crt
+cert server.crt
+key server.key
+dh dh.pem
+auth SHA512
+tls-crypt tc.key
+topology subnet
+server 10.8.0.0 255.255.255.0
+push "redirect-gateway def1 bypass-dhcp"
+ifconfig-pool-persist ipp.txt
+push "dhcp-option DNS 8.8.8.8"
+push "dhcp-option DNS 8.8.4.4"
+keepalive 10 120
+cipher AES-256-CBC
+# user nobody
+# igroup nogroup
+persist-key
+persist-tun
+verb 3
+crl-verify crl.pem
+explicit-exit-notify
+client-to-client  #允许客户端之间互相访问
+```
+
 
 ## 服务控制
 
 ```
 # 停止服务
-systemctl stop openvpn@-server
+sudo systemctl stop openvpn-server@-server
 # 启动服务
-systemctl start openvpn@-server
+sudo systemctl start openvpn-server@-server
+
+# 查看状态
+sudo systemctl status openvpn-server@server
 ```
 
 
