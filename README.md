@@ -229,6 +229,9 @@ session required pam_limits.so
 # 环境
 
 - ubuntu-20.04-LTS
+- openvpn客户端 下载地址
+- 64位：http://www.npackd.org/p/openvpn64
+- 32位：http://www.npackd.org/p/openvpn
 
 
 ## 安装
