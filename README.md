@@ -341,9 +341,9 @@ client-to-client  #允许客户端之间互相访问
 
 ```
 # 停止服务
-sudo systemctl stop openvpn-server@-server
+sudo systemctl stop openvpn-server@server
 # 启动服务
-sudo systemctl start openvpn-server@-server
+sudo systemctl start openvpn-server@server
 
 # 查看状态
 sudo systemctl status openvpn-server@server
