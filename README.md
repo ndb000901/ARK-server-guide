@@ -164,7 +164,7 @@ https://github.com/Bletch1971/ServerManagers/tree/master/ASM
  sudo apt install lib32gcc-s1 steamcmd 
 ```
 
-## 安装方舟
+## 安装/更新 方舟
 
 ```
 steamcmd +login anonymous +force_install_dir <安装目录> +app_update 376030 +quit
@@ -220,6 +220,40 @@ session required pam_limits.so
 ./ShooterGameServer TheIsland?listen?ServerCrosshair=True?MapPlayerLocation=True?AllowThirdPersonPlayer=True?TheMaxStructuresInRange=100 -UseBattlEye
 ```
 
+
+## ubuntu 安装mods -->方法一
+
+**1、编辑/home/haha/ark/ShooterGame/Saved/Config/LinuxServer/GameUserSettings.ini**
+
+```
+# 在ServerSettings下添加
+[ServerSettings]
+ActiveMods=1404697612,1111111,<id>
+```
+
+**2、将mod对应的文件夹和id.mod文件复制到/home/haha/ark/ShooterGame/Content/Mods下**
+
+## ubuntu 安装mods -->方法二
+
+**大佬仓库地址 https://github.com/LHammonds/ark-bash/**
+
+
+**大佬博客地址 https://hammondslegacy.com/forum/viewtopic.php?f=40&t=294**
+
+**大佬论坛帖子 https://survivetheark.com/index.php?/forums/topic/497784-help-installing-ark-mods-on-linux-server/**
+
+```
+您将需要 Python3、arkit.py 和 Ark_Mod_Download.py。
+
+wget https://raw.githubusercontent.com/LHammonds/ark-bash/main/arkit.py  --output-document /tmp/arkit.py
+wget https://raw.githubusercontent.com/LHammonds/ark-bash/main/Ark_Mod_Downloader.py  --output-document /tmp/Ark_Mod_Downloader.py
+下载器脚本从主要用于 Windows 平台但现在可在 Linux 上运行的原始格式进行了修改。然而，它应该一次处理下载所有的模组，但这没有用，我从来没有修复它。只需为您要下载和提取的每个单独的模块调用脚本。
+
+这是一个如何调用mod“1609138312”脚本的示例，其中游戏安装在“/opt/ark/template”并且steam命令是“/usr/games/steamcmd”
+
+python3 /opt/ark/Ark_Mod_Downloader.py --modids "1609138312" --workingdir "/opt/ark/template" --steamcmd "/usr/games" --namefile
+它将使用 SteamCMD 将其下载到 steamapps 文件夹，完成后，它将解压缩，创建 .mod 文件并将其放置在正确的“ShooterGame/Content/Mods”文件夹中。
+```
 
 
 ****
